@@ -125,7 +125,7 @@
                     <!-- Video Area Start -->
                     <div class="video-area" style="background-image: url(img/bg-img/video.jpg);">
                         <div class="video-play-btn">
-                            <a href={{url}} class="video_btn"><i class="fa fa-play" aria-hidden="true"></i></a>
+                            <a :href="url" class="video_btn"><i class="fa fa-play" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
@@ -958,6 +958,23 @@
         var db = firebase.firestore(app);
 
         var mainRef = db.collection('main').doc('live');
+        var streamRef = db.collection('main').doc('datastream');
+
+        new Vue({
+
+            el: "#live",
+
+            data: {
+                url: null
+            },
+
+            created(){
+
+                streamRef.get().then(doc=>{
+                    this.url = doc.data().youtubelink;
+                })
+            }
+        });
 
         new Vue({
 
@@ -980,7 +997,7 @@
                     this.wickets = doc.data().wickets;
                 })
             }
-        })
+        });
 
     </script>
 
