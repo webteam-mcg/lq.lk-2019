@@ -29,6 +29,10 @@
     <!-- development version, includes helpful console warnings -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
 
@@ -121,7 +125,7 @@
                     <!-- Video Area Start -->
                     <div class="video-area" style="background-image: url(img/bg-img/video.jpg);">
                         <div class="video-play-btn">
-                            <a href="https://www.youtube.com/watch?v=T_61jncnWwI" class="video_btn"><i class="fa fa-play" aria-hidden="true"></i></a>
+                            <a href={{url}} class="video_btn"><i class="fa fa-play" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
@@ -142,9 +146,9 @@
                 
               <div class="col-md-3 col-sm-6 col-xs-12 text-center wow animated zoomIn col-lg-6" data-wow-delay="0.6s">
           <div class="service-item" id="mainScore">
-            <a id="Batting" class="btn btn-custom btn-lg page-scroll" style="color: gold;">TBD</a>
-            <h1 class="mainScore"><span id="score">0</span>/<span id="wickets">0</span></h1>
-            <h2><span class="mainOvers" id="Overs"><span id="overs"></span> OVERS</h2>
+            <a id="Batting" class="btn btn-custom btn-lg page-scroll" style="color: gold;">{{ msg }}</a>
+            <h1 class="mainScore"><span id="score">{{ score }}</span>/<span id="wickets">{{ wickets }}</span></h1>
+            <h2><span class="mainOvers" id="Overs">{{ overs }}<span id="overs"></span> OVERS</h2>
             <p id="MatchStatus"></p>
           </div>
         </div>
@@ -722,104 +726,68 @@
              
                 <div class="col-12 col-md-6 col-lg-5 service-item2"><center><h2><br>Mahinda Team</h2></center>
                    <div class="app_screenshots_slides owl-carousel">
-                        <!-- <div class="single-shot">
-                            <img src="img/team-img/mcg/1.jpg" alt="">
+                        <div class="single-shot">
+                            <img src="img/team-img/1.jpg" alt="">
                         </div> 
                         <div class="single-shot">
-                            <img src="img/team-img/mcg/2.jpg" alt="">
+                            <img src="img/team-img/2.jpg" alt="">
                         </div>
                         <div class="single-shot">
-                            <img src="img/team-img/mcg/3.jpg" alt="">
+                            <img src="img/team-img/3.jpg" alt="">
                         </div> 
                         <div class="single-shot">
-                            <img src="img/team-img/mcg/4.jpg" alt="">
+                            <img src="img/team-img/4.jpg" alt="">
                         </div>
                         <div class="single-shot">
-                            <img src="img/team-img/mcg/5.jpg" alt="">
+                            <img src="img/team-img/5.jpg" alt="">
                         </div> 
                         <div class="single-shot">
-                            <img src="img/team-img/mcg/6.jpg" alt="">
+                            <img src="img/team-img/6.jpg" alt="">
                         </div> 
                         <div class="single-shot">
-                            <img src="img/team-img/mcg/7.jpg" alt="">
+                            <img src="img/team-img/7.jpg" alt="">
                         </div> 
                         <div class="single-shot">
-                            <img src="img/team-img/mcg/8.jpg" alt="">
+                            <img src="img/team-img/8.jpg" alt="">
                         </div> 
                         <div class="single-shot">
-                            <img src="img/team-img/mcg/9.jpg" alt="">
-                        </div> 
-                        <div class="single-shot">
-                            <img src="img/team-img/mcg/10.jpg" alt="">
-                        </div>
-                        <div class="single-shot">
-                            <img src="img/team-img/mcg/11.jpg" alt="">
-                        </div> 
-                        <div class="single-shot">
-                            <img src="img/team-img/mcg/12.jpg" alt="">
-                        </div> 
-                        <div class="single-shot">
-                            <img src="img/team-img/mcg/13.jpg" alt="">
-                        </div> 
-                        <div class="single-shot">
-                            <img src="img/team-img/mcg/14.jpg" alt="">
-                        </div> 
-                        <div class="single-shot">
-                            <img src="img/team-img/mcg/15.jpg" alt="">
-                        </div> 
-                        <div class="single-shot">
-                            <img src="img/team-img/mcg/16.jpg" alt="">
-                        </div>                                                 -->
+                            <img src="img/team-img/9.jpg" alt="">
+                        </div>                                              
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-5 service-item2">
                 <center><h2><br>Richmond Team<br></h2></center>
                     <div class="app_screenshots_slides owl-carousel">
-                        <!-- <div class="single-shot">
-                            <img src="img/team-img/rcg/1.jpg" alt="">
+                        <div class="single-shot">
+                            <img src="img/team-img/10.jpg" alt="">
                         </div> 
                         <div class="single-shot">
-                            <img src="img/team-img/rcg/2.jpg" alt="">
+                            <img src="img/team-img/11.jpg" alt="">
                         </div>   
                         <div class="single-shot">
-                            <img src="img/team-img/rcg/3.jpg" alt="">
+                            <img src="img/team-img/12.jpg" alt="">
                         </div>   
                         <div class="single-shot">
-                            <img src="img/team-img/rcg/4.jpg" alt="">
+                            <img src="img/team-img/13.jpg" alt="">
                         </div>   
                         <div class="single-shot">
-                            <img src="img/team-img/rcg/5.jpg" alt="">
+                            <img src="img/team-img/14.jpg" alt="">
                         </div>   
                         <div class="single-shot">
-                            <img src="img/team-img/rcg/6.jpg" alt="">
+                            <img src="img/team-img/15.jpg" alt="">
                         </div>   
                         <div class="single-shot">
-                            <img src="img/team-img/rcg/7.jpg" alt="">
+                            <img src="img/team-img/16.jpg" alt="">
                         </div>   
                         <div class="single-shot">
-                            <img src="img/team-img/rcg/8.jpg" alt="">
+                            <img src="img/team-img/17.jpg" alt="">
                         </div>   
                         <div class="single-shot">
-                            <img src="img/team-img/rcg/9.jpg" alt="">
+                            <img src="img/team-img/18.jpg" alt="">
                         </div>   
                         <div class="single-shot">
-                            <img src="img/team-img/rcg/10.jpg" alt="">
-                        </div>   
-                        <div class="single-shot">
-                            <img src="img/team-img/rcg/11.jpg" alt="">
-                        </div>   
-                        <div class="single-shot">
-                            <img src="img/team-img/rcg/12.jpg" alt="">
-                        </div>   
-                        <div class="single-shot">
-                            <img src="img/team-img/rcg/13.jpg" alt="">
-                        </div>   
-                        <div class="single-shot">
-                            <img src="img/team-img/rcg/14.jpg" alt="">
-                        </div>  
-                        <div class="single-shot">
-                            <img src="img/team-img/rcg/15.jpg" alt="">
-                        </div>                         -->
+                            <img src="img/team-img/19.jpg" alt="">
+                        </div>                          
                     </div>
                 </div>
             </div>
@@ -971,8 +939,51 @@
     <script src="js/footer-reveal.min.js"></script>
     <!-- Active JS -->
     <script src="js/active.js"></script>
-    <!-- Firebase configurations -->
-    <script src="app.js"></script>
+
+    <script>
+
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyB_fCrqzAGkDkAYDtdtERw_IMwoCgmkrJQ",
+            authDomain: "lqlk-5370b.firebaseapp.com",
+            databaseURL: "https://lqlk-5370b.firebaseio.com",
+            projectId: "lqlk-5370b",
+            storageBucket: "lqlk-5370b.appspot.com",
+            messagingSenderId: "612878491224",
+            appId: "1:612878491224:web:be9732520ddf14b97c742d",
+            measurementId: "G-0QQYMZPR82"
+        };
+        // Initialize Firebase
+        var app = firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore(app);
+
+        var mainRef = db.collection('main').doc('live');
+
+        new Vue({
+
+            el: "#mainScore",
+
+            data: {
+                msg: null,
+                score: null,
+                overs: null,
+                wickets: null
+            },
+
+            created(){
+                
+                mainRef.onSnapshot(doc =>{
+                    this.msg = doc.data().message;
+                    this.score = doc.data().score;
+                    var balls = doc.data().balls;
+                    this.overs = Math.floor(balls/6)+(balls%6)/10;
+                    this.wickets = doc.data().wickets;
+                })
+            }
+        })
+
+    </script>
+
 </body>
 
 </html>
