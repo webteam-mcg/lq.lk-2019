@@ -802,7 +802,7 @@
                         <td>{{ player.balls }}</td>
                         <td>{{ player.four }}</td>
                         <td>{{ player.six }}</td>
-                        <td v-if="player.balls !== 0">{{ (player.score*100)/player.balls }}</td>
+                        <td v-if="player.balls !== 0">{{ ((player.score*100)/player.balls).toFixed(2) }}</td>
                         <td v-else>0</td>
                     </tr>
                     
@@ -867,7 +867,8 @@
                           <td>{{ player.score }}</td>
                           <td>{{ player.maiden }}</td>
                           <td>{{ player.wickets }}</td>
-                          <td>{{ player.score/(Math.floor(player.balls/6)+(player.balls%6)/10)  }}</td>
+                          <td v-if="player.balls !== 0">{{ (player.score/(Math.floor(player.balls/6)+(player.balls%6)/10)).toFixed(2)  }}</td>
+                          <td v-else>0</td>
                       </tr>
                   </tbody>
               </table>
